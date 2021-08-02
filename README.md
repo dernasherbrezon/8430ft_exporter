@@ -21,11 +21,32 @@ mvn clean package
 
 ## Run
 
-FIXME
+Edit sample configuration at ```./src/main/resources/config.properties``` and run using the following command:
+
+```
+java -jar ./target/8430ft_exporter.jar ./src/main/resources/config.properties 
+```
 
 ## Run as a service
 
-FIXME
+1. Modify ```./src/main/resources/8430ft_exporter.service``` file
+2. Copy this file:
+
+```
+sudo cp ./src/main/resources/8430ft_exporter.service /etc/systemd/system/
+```
+
+3. Enable the service:
+
+```
+sudo systemctl enable 8430ft_exporter.service
+```
+
+4. Start service:
+
+```
+sudo systemctl start 8430ft_exporter.service
+```
 
 ## Prometheus configuration
 

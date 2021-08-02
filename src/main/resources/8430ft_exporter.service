@@ -1,0 +1,10 @@
+[Unit]
+Description=8430FT Exporter
+
+[Service]
+Restart=always
+User=pi
+ExecStart=/usr/bin/java -Djava.util.logging.config.file=<path to logging.properties> -jar <path to 8430ft_exporter.jar> <path to config.properties>
+
+[Install]
+WantedBy=multi-user.target
