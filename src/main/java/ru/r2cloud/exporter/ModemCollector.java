@@ -29,6 +29,28 @@ import io.prometheus.client.GaugeMetricFamily;
 
 public class ModemCollector extends Collector {
 
+	private static final String TX_BYTE = "tx_byte";
+	private static final String RX_BYTE = "rx_byte";
+	private static final String ERRORS = "errors";
+	private static final String QUOTA = "quota";
+	private static final String TOTAL_USED_UNLIMIT = "total_used_unlimit";
+	private static final String TOTAL_USED_PERIOD = "total_used_period";
+	private static final String TOTAL_USED_MONTH = "total_used_month";
+	private static final String CUR_BAND = "cur_band";
+	private static final String QS_COMPLETE = "qs_complete";
+	private static final String CUR_LOGIN_STATUS = "cur_login_status";
+	private static final String CHECK_UPGRADE_TIP = "check_upgrade_tip";
+	private static final String NEW_SMS_NUM = "new_sms_num";
+	private static final String SYS_MODE = "sys_mode";
+	private static final String BATTERY_CONNECT = "Battery_connect";
+	private static final String BATTERY_VOLTAGE = "Battery_voltage";
+	private static final String BATTERY_CHARGE = "Battery_charge";
+	private static final String BATTERY_CHARGING = "Battery_charging";
+	private static final String ROAMING = "roaming";
+	private static final String AUTO_APN = "auto_apn";
+	private static final String PIN_STATUS = "pin_status";
+	private static final String SIM_STATUS = "sim_status";
+
 	private static final Logger LOG = LoggerFactory.getLogger(ModemCollector.class);
 
 	private final Properties props;
@@ -51,27 +73,27 @@ public class ModemCollector extends Collector {
 
 		JsonObject status = downloadJson("json_status");
 		if (status != null) {
-			result.add(new GaugeMetricFamily("sim_status", "sim_status", Double.valueOf(status.getString("sim_status", "0"))));
-			result.add(new GaugeMetricFamily("pin_status", "pin_status", Double.valueOf(status.getString("pin_status", "0"))));
-			result.add(new GaugeMetricFamily("auto_apn", "auto_apn", Double.valueOf(status.getString("auto_apn", "0"))));
-			result.add(new GaugeMetricFamily("roaming", "roaming", Double.valueOf(status.getString("roaming", "0"))));
+			result.add(new GaugeMetricFamily(SIM_STATUS, SIM_STATUS, Double.valueOf(status.getString(SIM_STATUS, "0"))));
+			result.add(new GaugeMetricFamily(PIN_STATUS, PIN_STATUS, Double.valueOf(status.getString(PIN_STATUS, "0"))));
+			result.add(new GaugeMetricFamily(AUTO_APN, AUTO_APN, Double.valueOf(status.getString(AUTO_APN, "0"))));
+			result.add(new GaugeMetricFamily(ROAMING, ROAMING, Double.valueOf(status.getString(ROAMING, "0"))));
 
-			result.add(new GaugeMetricFamily("Battery_charging", "Battery_charging", Double.valueOf(status.getString("Battery_charging", "0"))));
-			result.add(new GaugeMetricFamily("Battery_charge", "Battery_charge", Double.valueOf(status.getString("Battery_charge", "0"))));
-			result.add(new GaugeMetricFamily("Battery_voltage", "Battery_voltage", Double.valueOf(status.getString("Battery_voltage", "0"))));
-			result.add(new GaugeMetricFamily("Battery_connect", "Battery_connect", Double.valueOf(status.getString("Battery_connect", "0"))));
-			result.add(new GaugeMetricFamily("sys_mode", "sys_mode", Double.valueOf(status.getString("sys_mode", "0"))));
+			result.add(new GaugeMetricFamily(BATTERY_CHARGING, BATTERY_CHARGING, Double.valueOf(status.getString(BATTERY_CHARGING, "0"))));
+			result.add(new GaugeMetricFamily(BATTERY_CHARGE, BATTERY_CHARGE, Double.valueOf(status.getString(BATTERY_CHARGE, "0"))));
+			result.add(new GaugeMetricFamily(BATTERY_VOLTAGE, BATTERY_VOLTAGE, Double.valueOf(status.getString(BATTERY_VOLTAGE, "0"))));
+			result.add(new GaugeMetricFamily(BATTERY_CONNECT, BATTERY_CONNECT, Double.valueOf(status.getString(BATTERY_CONNECT, "0"))));
+			result.add(new GaugeMetricFamily(SYS_MODE, SYS_MODE, Double.valueOf(status.getString(SYS_MODE, "0"))));
 
 			result.add(new GaugeMetricFamily("nr_connected_dev", "Number of connected devices", Double.valueOf(status.getString("nr_connected_dev", "0"))));
-			result.add(new GaugeMetricFamily("new_sms_num", "new_sms_num", Double.valueOf(status.getString("new_sms_num", "0"))));
+			result.add(new GaugeMetricFamily(NEW_SMS_NUM, NEW_SMS_NUM, Double.valueOf(status.getString(NEW_SMS_NUM, "0"))));
 
 			result.add(new GaugeMetricFamily("sms_unread", "Number of unread SMS", Double.valueOf(status.getString("sms_unread_long_num", "0"))));
 			result.add(new GaugeMetricFamily("rssi", "received signal strength indicator", Double.valueOf(status.getString("rssi", "0"))));
 
-			result.add(new GaugeMetricFamily("check_upgrade_tip", "check_upgrade_tip", Double.valueOf(status.getString("check_upgrade_tip", "0"))));
-			result.add(new GaugeMetricFamily("cur_login_status", "cur_login_status", Double.valueOf(status.getString("cur_login_status", "0"))));
-			result.add(new GaugeMetricFamily("qs_complete", "qs_complete", Double.valueOf(status.getString("qs_complete", "0"))));
-			result.add(new GaugeMetricFamily("cur_band", "cur_band", Double.valueOf(status.getString("cur_band", "0"))));
+			result.add(new GaugeMetricFamily(CHECK_UPGRADE_TIP, CHECK_UPGRADE_TIP, Double.valueOf(status.getString(CHECK_UPGRADE_TIP, "0"))));
+			result.add(new GaugeMetricFamily(CUR_LOGIN_STATUS, CUR_LOGIN_STATUS, Double.valueOf(status.getString(CUR_LOGIN_STATUS, "0"))));
+			result.add(new GaugeMetricFamily(QS_COMPLETE, QS_COMPLETE, Double.valueOf(status.getString(QS_COMPLETE, "0"))));
+			result.add(new GaugeMetricFamily(CUR_BAND, CUR_BAND, Double.valueOf(status.getString(CUR_BAND, "0"))));
 
 			long uptime = TimeUnit.DAYS.toSeconds(Long.valueOf(status.getString("run_days", "0"))) + TimeUnit.HOURS.toSeconds(Long.valueOf(status.getString("run_hours", "0"))) + TimeUnit.MINUTES.toSeconds(Long.valueOf(status.getString("run_minutes", "0")))
 					+ Long.valueOf(status.getString("run_seconds", "0"));
@@ -81,24 +103,24 @@ public class ModemCollector extends Collector {
 
 		JsonObject statistics = downloadJson("json_statistics");
 		if (statistics != null) {
-			result.add(new CounterMetricFamily("total_used_month", "total_used_month", Double.valueOf(statistics.getString("total_used_month", "0"))));
-			result.add(new CounterMetricFamily("total_used_period", "total_used_period", Double.valueOf(statistics.getString("total_used_period", "0"))));
-			result.add(new CounterMetricFamily("total_used_unlimit", "total_used_unlimit", Double.valueOf(statistics.getString("total_used_unlimit", "0"))));
-			result.add(new GaugeMetricFamily("quota", "quota", Double.valueOf(statistics.getString("quota", "0"))));
-			result.add(new CounterMetricFamily("errors", "errors", Double.valueOf(statistics.getString("errors", "0"))));
+			result.add(new CounterMetricFamily(TOTAL_USED_MONTH, TOTAL_USED_MONTH, Double.valueOf(statistics.getString(TOTAL_USED_MONTH, "0"))));
+			result.add(new CounterMetricFamily(TOTAL_USED_PERIOD, TOTAL_USED_PERIOD, Double.valueOf(statistics.getString(TOTAL_USED_PERIOD, "0"))));
+			result.add(new CounterMetricFamily(TOTAL_USED_UNLIMIT, TOTAL_USED_UNLIMIT, Double.valueOf(statistics.getString(TOTAL_USED_UNLIMIT, "0"))));
+			result.add(new GaugeMetricFamily(QUOTA, QUOTA, Double.valueOf(statistics.getString(QUOTA, "0"))));
+			result.add(new CounterMetricFamily(ERRORS, ERRORS, Double.valueOf(statistics.getString(ERRORS, "0"))));
 
 			result.add(new CounterMetricFamily("rx", "rx", Double.valueOf(statistics.getString("rx", "0"))));
 			result.add(new CounterMetricFamily("tx", "tx", Double.valueOf(statistics.getString("tx", "0"))));
-			result.add(new CounterMetricFamily("rx_byte", "rx_byte", Double.valueOf(statistics.getString("rx_byte", "0"))));
-			result.add(new CounterMetricFamily("tx_byte", "tx_byte", Double.valueOf(statistics.getString("tx_byte", "0"))));
-			
-			//the following metrics can be derived from rx_byte/tx_byte
-//			result.add(new CounterMetricFamily("tx_byte_all", "tx_byte_all", Double.valueOf(statistics.getString("tx_byte_all", "0"))));
-//			result.add(new CounterMetricFamily("rx_byte_all", "rx_byte_all", Double.valueOf(statistics.getString("rx_byte_all", "0"))));
-//			result.add(new GaugeMetricFamily("curUpSpeed", "curUpSpeed", Double.valueOf(statistics.getString("curUpSpeed", "0"))));
-//			result.add(new GaugeMetricFamily("curDnSpeed", "curDnSpeed", Double.valueOf(statistics.getString("curDnSpeed", "0"))));
-//			result.add(new GaugeMetricFamily("maxUpSpeed", "maxUpSpeed", Double.valueOf(statistics.getString("maxUpSpeed", "0"))));
-//			result.add(new GaugeMetricFamily("maxDnSpeed", "maxDnSpeed", Double.valueOf(statistics.getString("maxDnSpeed", "0"))));
+			result.add(new CounterMetricFamily(RX_BYTE, RX_BYTE, Double.valueOf(statistics.getString(RX_BYTE, "0"))));
+			result.add(new CounterMetricFamily(TX_BYTE, TX_BYTE, Double.valueOf(statistics.getString(TX_BYTE, "0"))));
+
+			// the following metrics can be derived from rx_byte/tx_byte
+			// tx_byte_all
+			// rx_byte_all
+			// curUpSpeed
+			// curDnSpeed
+			// maxUpSpeed
+			// maxDnSpeed
 		}
 		return result;
 	}
