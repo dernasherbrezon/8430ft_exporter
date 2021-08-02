@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/dernasherbrezon/8430ft_exporter.svg?branch=master)](https://travis-ci.com/dernasherbrezon/8430ft_exporter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ru.r2cloud%3A8430ft_exporter&metric=alert_status)](https://sonarcloud.io/dashboard?id=ru.r2cloud%3A8430ft_exporter)
+
 # 8430ft_exporter
 
 This repository contains metrics exporter to [Prometheus](https://prometheus.io) for 8430FT modem. 8430FT is a 3G/4G modem widely used by MTS. It can act as a normal USB modem or can be WiFi access point.
