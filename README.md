@@ -42,7 +42,7 @@ sudo cp ./src/main/resources/8430ft_exporter.service /etc/systemd/system/
 sudo systemctl enable 8430ft_exporter.service
 ```
 
-4. Start service:
+4. Start the service:
 
 ```
 sudo systemctl start 8430ft_exporter.service
@@ -50,4 +50,10 @@ sudo systemctl start 8430ft_exporter.service
 
 ## Prometheus configuration
 
-FIXME
+```
+  - job_name: '8430FT'
+    static_configs:
+      - targets: ['<ip address of 8430ft_exporter>:9841']
+```
+
+![8430FT dashboard](docs/dashboard.png)

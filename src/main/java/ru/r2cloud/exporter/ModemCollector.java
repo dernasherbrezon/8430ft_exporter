@@ -91,13 +91,14 @@ public class ModemCollector extends Collector {
 			result.add(new CounterMetricFamily("tx", "tx", Double.valueOf(statistics.getString("tx", "0"))));
 			result.add(new CounterMetricFamily("rx_byte", "rx_byte", Double.valueOf(statistics.getString("rx_byte", "0"))));
 			result.add(new CounterMetricFamily("tx_byte", "tx_byte", Double.valueOf(statistics.getString("tx_byte", "0"))));
-			result.add(new CounterMetricFamily("tx_byte_all", "tx_byte_all", Double.valueOf(statistics.getString("tx_byte_all", "0"))));
-			result.add(new CounterMetricFamily("rx_byte_all", "rx_byte_all", Double.valueOf(statistics.getString("rx_byte_all", "0"))));
-
-			result.add(new GaugeMetricFamily("curUpSpeed", "curUpSpeed", Double.valueOf(statistics.getString("curUpSpeed", "0"))));
-			result.add(new GaugeMetricFamily("curDnSpeed", "curDnSpeed", Double.valueOf(statistics.getString("curDnSpeed", "0"))));
-			result.add(new GaugeMetricFamily("maxUpSpeed", "maxUpSpeed", Double.valueOf(statistics.getString("maxUpSpeed", "0"))));
-			result.add(new GaugeMetricFamily("maxDnSpeed", "maxDnSpeed", Double.valueOf(statistics.getString("maxDnSpeed", "0"))));
+			
+			//the following metrics can be derived from rx_byte/tx_byte
+//			result.add(new CounterMetricFamily("tx_byte_all", "tx_byte_all", Double.valueOf(statistics.getString("tx_byte_all", "0"))));
+//			result.add(new CounterMetricFamily("rx_byte_all", "rx_byte_all", Double.valueOf(statistics.getString("rx_byte_all", "0"))));
+//			result.add(new GaugeMetricFamily("curUpSpeed", "curUpSpeed", Double.valueOf(statistics.getString("curUpSpeed", "0"))));
+//			result.add(new GaugeMetricFamily("curDnSpeed", "curDnSpeed", Double.valueOf(statistics.getString("curDnSpeed", "0"))));
+//			result.add(new GaugeMetricFamily("maxUpSpeed", "maxUpSpeed", Double.valueOf(statistics.getString("maxUpSpeed", "0"))));
+//			result.add(new GaugeMetricFamily("maxDnSpeed", "maxDnSpeed", Double.valueOf(statistics.getString("maxDnSpeed", "0"))));
 		}
 		return result;
 	}
