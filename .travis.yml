@@ -8,7 +8,7 @@ addons:
       secure: "JmRMJ5fqTXVclHeL1EK3vl0MRIzL5S2LxqLVszJA9juWEuGdc8P2Ko4w/jL/IzOiGPHz0mCf6uhvONQ/67fVybK39TMTVKb5BpFE7OE16JbMPR/ZNUdP3UOdRk5b2502PeAD7DrXNw7sFRPtLRTifLlkwcKk2jK9/6iTltjjWejPHL0zN3Dx1B08uTp6tjXurwrZnfzUiNEuPgAUBUA/exbwYjOJFL3Aog/5ZYrTOZrniGkQRgmuqCkffwQcESR0RolU+fXW+dxfnjP1Jrpw8x17W97TD3Dh3/mHUEPi+bjexQYLAKBifoPzFiU+ay9QcZ/lnGm9RE6VuLWWHs+p4fkIiAB05oblVdGFzXgvVZja0J2zeQVCzbMwEY2jjm5k9Ygx9nKedsTSZPLpgKZW100DVJSBmCtYob/9Fibcuc3H60w/fHWf+Gll45yeBsbjRz1/PJXD8LgVUgHCxhxzvB/1S0e2gIHjWMSmyNzg1EuplAH+X8dyNMLtjMb6RDNRGzPDX76p2U3Elp6sLIPqW4YuZ8PYSueeVjUZ5urcNJmlOXL8NmqJhPXoXlH8Y/Rh40SQfXJpct3oeK58gHM5nMwZHn4QFGWetWTcyJTC5ZMIW1uLj0uWuh/cvUzhn8w/R91zit/bwTSyvM9pKm1Zn+H/yxMmfCHmf9cqDFRDHoE="
 
 script:
-  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.scm.disabled=true -Dsonar.language=java
+  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.scm.disabled=true -Dsonar.language=java -Dsonar.projectKey=dernasherbrezon_8430ft_exporter
 
 cache:
   directories:
