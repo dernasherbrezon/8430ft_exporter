@@ -55,7 +55,7 @@ sudo systemctl start 8430ft_exporter.service
 ```
   - job_name: '8430FT'
     static_configs:
-      - targets: ['<ip address of 8430ft_exporter>:9841']
+      - targets: ['<ip address of 8430ft_exporter>:9844']
 ```
 
 ![8430FT dashboard](docs/dashboard.png)

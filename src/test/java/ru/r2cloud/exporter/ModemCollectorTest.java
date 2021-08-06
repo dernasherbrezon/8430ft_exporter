@@ -35,7 +35,7 @@ public class ModemCollectorTest {
 
 	@Test
 	public void testFailure() throws Exception {
-		assertEquals("", readMetrics("http://127.0.0.1:9841"));
+		assertEquals("", readMetrics("http://127.0.0.1:9844"));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ public class ModemCollectorTest {
 		try (InputStream is = ModemCollectorTest.class.getClassLoader().getResourceAsStream("expected.metrics.txt")) {
 			expected = MockResponse.convertToString(is);
 		}
-		assertEquals(expected.trim(), readMetrics("http://127.0.0.1:9841").trim());
+		assertEquals(expected.trim(), readMetrics("http://127.0.0.1:9844").trim());
 	}
 
 	private static String readMetrics(String basePath) {
