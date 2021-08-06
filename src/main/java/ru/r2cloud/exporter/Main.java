@@ -35,8 +35,19 @@ public class Main {
 		ModemCollector collector = new ModemCollector(props);
 		collector.register();
 		LOG.info("collector started");
-		new HTTPServer(props.getProperty("server.hostname"), Integer.valueOf(props.getProperty("server.port")), false);
-
+		HTTPServer server = new HTTPServer(props.getProperty("server.hostname"), Integer.valueOf(props.getProperty("server.port")), true);
+		synchronized (collector) {
+			while (true) {
+				try {
+					collector.wait();
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					break;
+				}
+			}
+		}
+		server.stop();
+		LOG.info("stopped");
 	}
 
 }

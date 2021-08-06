@@ -1,0 +1,81 @@
+# HELP sim_status sim_status
+# TYPE sim_status gauge
+sim_status 0.0
+# HELP pin_status pin_status
+# TYPE pin_status gauge
+pin_status 0.0
+# HELP auto_apn auto_apn
+# TYPE auto_apn gauge
+auto_apn 0.0
+# HELP roaming roaming
+# TYPE roaming gauge
+roaming 0.0
+# HELP Battery_charging Battery_charging
+# TYPE Battery_charging gauge
+Battery_charging 0.0
+# HELP Battery_charge Battery_charge
+# TYPE Battery_charge gauge
+Battery_charge 1.0
+# HELP Battery_voltage Battery_voltage
+# TYPE Battery_voltage gauge
+Battery_voltage 0.0
+# HELP Battery_connect Battery_connect
+# TYPE Battery_connect gauge
+Battery_connect 0.0
+# HELP sys_mode sys_mode
+# TYPE sys_mode gauge
+sys_mode 17.0
+# HELP nr_connected_dev Number of connected devices
+# TYPE nr_connected_dev gauge
+nr_connected_dev 2.0
+# HELP new_sms_num new_sms_num
+# TYPE new_sms_num gauge
+new_sms_num 0.0
+# HELP sms_unread Number of unread SMS
+# TYPE sms_unread gauge
+sms_unread 8.0
+# HELP rssi received signal strength indicator
+# TYPE rssi gauge
+rssi -99.0
+# HELP check_upgrade_tip check_upgrade_tip
+# TYPE check_upgrade_tip gauge
+check_upgrade_tip 0.0
+# HELP cur_login_status cur_login_status
+# TYPE cur_login_status gauge
+cur_login_status 1.0
+# HELP qs_complete qs_complete
+# TYPE qs_complete gauge
+qs_complete 0.0
+# HELP cur_band cur_band
+# TYPE cur_band gauge
+cur_band 20.0
+# HELP uptime_seconds_total uptime in seconds
+# TYPE uptime_seconds_total counter
+uptime_seconds_total 409223.0
+# HELP total_used_month_total total_used_month
+# TYPE total_used_month_total counter
+total_used_month_total 7.315045079E9
+# HELP total_used_period_total total_used_period
+# TYPE total_used_period_total counter
+total_used_period_total 1.029269076E10
+# HELP total_used_unlimit_total total_used_unlimit
+# TYPE total_used_unlimit_total counter
+total_used_unlimit_total 1.029269076E10
+# HELP quota quota
+# TYPE quota gauge
+quota 0.0
+# HELP errors_total errors
+# TYPE errors_total counter
+errors_total 3570.0
+# HELP rx_total rx
+# TYPE rx_total counter
+rx_total 6983624.0
+# HELP tx_total tx
+# TYPE tx_total counter
+tx_total 4623523.0
+# HELP rx_byte_total rx_byte
+# TYPE rx_byte_total counter
+rx_byte_total 1.4187189E7
+# HELP tx_byte_total tx_byte
+# TYPE tx_byte_total counter
+tx_byte_total 1.53464825E8
