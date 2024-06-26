@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/dernasherbrezon/8430ft_exporter.svg?branch=main)](https://travis-ci.com/dernasherbrezon/8430ft_exporter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dernasherbrezon_8430ft_exporter&metric=alert_status)](https://sonarcloud.io/dashboard?id=dernasherbrezon_8430ft_exporter)
+[![Main Workflow](https://github.com/dernasherbrezon/8430ft_exporter/actions/workflows/build.yml/badge.svg)](https://github.com/dernasherbrezon/8430ft_exporter/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dernasherbrezon_8430ft_exporter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dernasherbrezon_8430ft_exporter)
 
 # 8430ft_exporter
 
